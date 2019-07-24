@@ -92,7 +92,7 @@ const SearchBox = ({
 );
 
 SearchBox.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.number,
   customCss: PropTypes.object,
   icon: PropTypes.string,
   id: PropTypes.string,
