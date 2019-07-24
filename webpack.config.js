@@ -17,6 +17,7 @@ module.exports = () => {
     entry: {
       app: [
         'babel-polyfill',
+        'webpack-hot-middleware/client',
         path.join(__dirname, 'src/app/index.js'),
       ],
     },
@@ -33,6 +34,7 @@ module.exports = () => {
         filename: 'index.html',
         template: 'src/app/index.html',
         inject: 'body',
+        envVars: JSON.stringify({ NI_SERVICE: '/v1/national-insurance' })
       }),
       function () {
         this.hooks.watchRun.tapAsync('rebuild-watcher', (compiler, callback) => {
@@ -41,6 +43,7 @@ module.exports = () => {
         });
       },
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.HotModuleReplacementPlugin()
     ],
     module: {
       rules: [

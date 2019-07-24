@@ -1,17 +1,24 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+import { Fragment } from 'react';
+import { css, jsx, Global } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { hot } from "react-hot-loader/root";
+
+import NationalInsurance from "./containers/NationalInsurance";
 
 const App = ({ store }) =>
   <Provider store={store}>
-    <p
-      css={css`
-        font-size: 100px;
-      `}
-    >
-      Your app here
-    </p>
+    <Fragment>
+      <Global styles={css`
+        body {
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          margin-left: auto;
+        }
+      `} />
+      <NationalInsurance />
+    </Fragment>
   </Provider>;
 
 App.propTypes = {
@@ -19,4 +26,4 @@ App.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-export default App;
+export default hot(App);

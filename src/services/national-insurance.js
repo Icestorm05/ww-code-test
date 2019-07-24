@@ -24,8 +24,18 @@ const bandsOnDate = (date) => {
   )(allBands);
 };
 
-// TODO this should do more than return the number it's given
-const slice = R.curry((floor, ceiling, num) => num);
+const slice = R.curry((floor, ceiling, num) => {
+
+  const range = RD.subtract(ceiling, floor);
+  const flooredNum = RD.subtract(num, floor);
+
+  // If lte to the range
+  // Return 0 if lte to the floor, else return the floored number.
+  // Else, return the range.
+  return flooredNum.lte(range) ?
+    RD.decimal(num).lte(floor) ? RD.decimal(0) : RD.decimal(flooredNum) :
+    RD.decimal(range);
+});
 
 const calcForBand = R.curry(
   (income, { floor, ceiling, rate }) => RD.multiply(

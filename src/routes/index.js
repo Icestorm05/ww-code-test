@@ -17,12 +17,14 @@ module.exports = () => {
     res.status(404).send('Page not found');
   });
 
-  app.get('*',
+  if (!process.env.HOT) {
+    app.get('*',
     (req, res) => {
       const pathToIndex = path.join(distPath, 'index.html');
 
-      res.render(pathToIndex, { layout: false, envVars: { NI_SERVICE: '/v1/national-insurance' } });
+      res.render(pathToIndex, { layout: false });
     });
+  }
 
   return app;
 };
