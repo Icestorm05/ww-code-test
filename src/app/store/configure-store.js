@@ -8,25 +8,22 @@ import rootSaga from './sagas';
 export default (history, initialState = {}) => {
   const sagaMiddleware = createSagaMiddleware();
 
-  let middleware = [
-    routerMiddleware(history),
-    sagaMiddleware,
-  ];
+  let middleware = [routerMiddleware(history), sagaMiddleware];
 
   if (process.env.NODE_ENV !== 'production') {
     middleware = [...middleware, logger];
   }
 
-  const composeEnhancers = process.env.NODE_ENV !== 'production' && typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers =
+    (process.env.NODE_ENV !== 'production' &&
+      typeof window !== 'undefined' &&
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    compose;
 
   const store = createStore(
     rootReducer,
     initialState,
-    composeEnhancers(
-      applyMiddleware(
-        ...middleware,
-      ),
-    ),
+    composeEnhancers(applyMiddleware(...middleware))
   );
 
   sagaMiddleware.run(rootSaga);

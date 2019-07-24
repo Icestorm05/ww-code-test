@@ -1,15 +1,14 @@
 {
   "extends": [
     "airbnb",
+    "prettier",
+    "prettier/react",
     "plugin:ramda/recommended"
   ],
-  "parser": "babel-eslint",
-  "parserOptions":{
-    "ecmaFeatures": {
-      "classes": true,
-      "experimentalObjectRestSpread": true
-    }
+  "env": {
+    "browser": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "new-cap": "off",
     "max-len": "off",
@@ -17,12 +16,15 @@
     "no-nested-ternary": "off",
     "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
     "react/prop-types": "warn",
-    "react/jsx-uses-react": "warn"
+    "react/jsx-uses-react": "warn",
+    "prettier/prettier": ["error"],
+    "import/prefer-default-export": "off"
   },
   "plugins": [
+    "prettier",
     "react",
     "import",
-    "ramda"
+    "ramda",
   ],
   "settings": {
     "react": {

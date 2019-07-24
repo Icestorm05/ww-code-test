@@ -10,16 +10,17 @@ module.exports = () => {
 
   app.use('/v1', v1());
 
-  app.use('/assets', express.static(path.join(distPath, '/assets'),
-    { redirect: false, maxage: '5d' }));
+  app.use(
+    '/assets',
+    express.static(path.join(distPath, '/assets'), { redirect: false, maxage: '5d' })
+  );
 
   app.use('/assets', (req, res) => {
     res.status(404).send('Page not found');
   });
 
   if (!process.env.HOT) {
-    app.get('*',
-    (req, res) => {
+    app.get('*', (req, res) => {
       const pathToIndex = path.join(distPath, 'index.html');
 
       res.render(pathToIndex, { layout: false });

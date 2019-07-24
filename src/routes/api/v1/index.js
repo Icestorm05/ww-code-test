@@ -5,11 +5,7 @@ const calculateNI = require('../../../middleware/calculate-ni');
 module.exports = () => {
   const api = Router();
 
-  api.post(
-    '/national-insurance',
-    setIncome,
-    calculateNI,
-  );
+  api.post('/national-insurance', setIncome, calculateNI);
 
   return api;
 };

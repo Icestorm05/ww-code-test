@@ -3,6 +3,6 @@
  * @param {number} income
  */
 export const setIncome = income => ({
-    type: "SET_INCOME",
-    income
+  type: 'SET_INCOME',
+  income
 });

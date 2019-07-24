@@ -18,7 +18,7 @@ module.exports = () => {
       app: [
         'babel-polyfill',
         'webpack-hot-middleware/client',
-        path.join(__dirname, 'src/app/index.js'),
+        path.join(__dirname, 'src/app/index.jsx'),
       ],
     },
     output: {

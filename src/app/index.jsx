@@ -9,7 +9,4 @@ const history = createBrowserHistory();
 const store = configureStore(history);
 const rootEl = document.getElementById('app');
 
-ReactDOM.render(
-  <App history={history} store={store} />,
-  rootEl,
-);
+ReactDOM.render(<App history={history} store={store} />, rootEl);

@@ -2,5 +2,5 @@
  * Creates a CALC_NI action.
  */
 export const calcNI = () => ({
-    type: "CALC_NI"
+  type: 'CALC_NI'
 });
